@@ -19,7 +19,7 @@ public class ControladorContaBancaria implements IControladorContaBancaria{
             System.out.println("PARAMETRO INVALIDO");
         } else {
 
-            if (!(this.repositorio.existe(conta.getIdConta()))) {
+            if (!(this.repositorio.existe(conta.getIdCliente()))) {
 
                 this.repositorio.cadastrar(conta);
 
@@ -36,23 +36,23 @@ public class ControladorContaBancaria implements IControladorContaBancaria{
     }
 
     @Override
-    public ContaBancaria buscarContaBancaria(String idConta) {
+    public ContaBancaria buscarContaBancaria(String idCliente) {
         ContaBancaria conta= null;
-        if (this.repositorio.buscarConta(idConta) == null) {
+        if (this.repositorio.buscarConta(idCliente) == null) {
             System.out.println("Conta não existe");
         } else {
-            conta = repositorio.buscarConta(idConta);
+            conta = repositorio.buscarConta(idCliente);
         }
         return conta;
     }
 
     @Override
-    public void removerConta(String idConta) {
+    public void removerConta(String idCliente) {
         boolean x = false;
         while (x == false) {
 
-            if (idConta != null) {
-                this.repositorio.remover(idConta);
+            if (idCliente != null) {
+                this.repositorio.remover(idCliente);
                 x = true;
                 System.out.println("Conta removida com sucesso!");
             } else {

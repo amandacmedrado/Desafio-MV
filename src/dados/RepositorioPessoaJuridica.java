@@ -51,7 +51,7 @@ public class RepositorioPessoaJuridica implements IRepositorioPessoaJuridica, Se
             }
             ois.close();
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("Erro: " + e.getMessage());
         }
         return rep;
     }
@@ -130,7 +130,7 @@ public class RepositorioPessoaJuridica implements IRepositorioPessoaJuridica, Se
             ous.close();
 
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("Erro: " + e.getMessage());
         }
 
     }

@@ -1,9 +1,6 @@
 import beans.*;
 import negocio.Fachada;
-
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
@@ -13,18 +10,18 @@ public class Main {
         Fachada fachada = Fachada.getInstance();
 
         // Criando objetos do tipo Endereco
-        Endereco endereco1 = new Endereco("Rua A", "12345-678", "Cidade A", "Estado A");
-        Endereco endereco2 = new Endereco("Rua B", "54321-876", "Cidade B", "Estado B");
-        Endereco endereco3 = new Endereco("Rua C", "98765-432", "Cidade C", "Estado C");
-        Endereco endereco4 = new Endereco("Rua D", "12345-677", "Cidade D", "Estado D");
-        Endereco endereco5 = new Endereco("Rua E", "54321-877", "Cidade E", "Estado E");
+        Endereco endereco1 = new Endereco("123456789","Rua A", "12345-678", "Cidade A", "Estado A");
+        Endereco endereco2 = new Endereco("987654321","Rua B", "54321-876", "Cidade B", "Estado B");
+        Endereco endereco3 = new Endereco("111222333", "Rua C", "98765-432", "Cidade C", "Estado C");
+        Endereco endereco4 = new Endereco("12345678901100","Rua D", "12345-677", "Cidade D", "Estado D");
+        Endereco endereco5 = new Endereco("98765432101100","Rua E", "54321-877", "Cidade E", "Estado E");
 
         // Criando objetos do tipo ContaBancaria
-        ContaBancaria conta1 = new ContaBancaria("123456789", "Cliente A", 123, 456789, 1000.0, new Date());
-        ContaBancaria conta2 = new ContaBancaria("987654321", "Cliente B", 789, 987654, 2000.0, new Date());
-        ContaBancaria conta3 = new ContaBancaria("111222333", "Cliente C", 456, 123456, 3000.0, new Date());
-        ContaBancaria conta4 = new ContaBancaria("12345678901100", "Cliente D", 122, 456789, 1000.0, new Date());
-        ContaBancaria conta5 = new ContaBancaria("98765432101100", "Cliente E", 788, 987655, 2000.0, new Date());
+        ContaBancaria conta1 = new ContaBancaria("123456789", "Cliente A", 123, 456789, 1000.0, new Date(122, 3, 1, 10, 30));
+        ContaBancaria conta2 = new ContaBancaria("987654321", "Cliente B", 789, 987654, 2000.0, new Date(120, 0, 15, 9, 13));
+        ContaBancaria conta3 = new ContaBancaria("111222333", "Cliente C", 456, 123456, 3000.0, new Date(119, 7, 10, 7, 6));
+        ContaBancaria conta4 = new ContaBancaria("12345678901100", "Cliente D", 122, 456789, 1000.0, new Date(121, 5, 7, 1, 30));
+        ContaBancaria conta5 = new ContaBancaria("98765432101100", "Cliente E", 788, 987655, 2000.0, new Date(1223, 12, 31, 5, 30));
 
 
         // Criando objetos do tipo PessoaFisica
@@ -109,9 +106,9 @@ public class Main {
         System.out.println(getRelatorioSaldoTodosClientes(List.of(cliente1, cliente2, cliente3)));
 
         System.out.println("\nDeletando clientes e contas do Sistema XPTO.\n");
-        fachada.removerConta(contaCliente1.getIdConta());
-        fachada.removerConta(contaCliente2.getIdConta());
-        fachada.removerConta(contaCliente3.getIdConta());
+        fachada.removerConta(contaCliente1.getIdCliente());
+        fachada.removerConta(contaCliente2.getIdCliente());
+        fachada.removerConta(contaCliente3.getIdCliente());
 
         fachada.removerPessoaFisica(cliente1.getCpf());
         fachada.removerPessoaFisica(cliente2.getCpf());
@@ -123,7 +120,7 @@ public class Main {
     }
 
     private static String getRelatorioSaldoCliente(Pessoa cliente) {
-        return "Relatório de Saldo do Cliente" + cliente.getNome()+
+        return "Relatório de Saldo do Cliente" + cliente.getNome()+ ":" +
                 "\nCliente: " + cliente.getNome() +
                 " - Cliente desde: " + cliente.getContas().get(0).getDataAberturaConta() +
                 "\nEndereço: " + cliente.getEndereco().getLogradouro() + "," + cliente.getEndereco().getCidade() + "," + cliente.getEndereco().getEstado() + "," + cliente.getEndereco().getCEP()+";" +
@@ -136,7 +133,7 @@ public class Main {
     }
 
     private static String getRelatorioSaldoClientePorPeriodo(Pessoa cliente) {
-        return "Relatório de Saldo do Cliente" + cliente.getNome()+ " e período" +
+        return "Relatório de Saldo do Cliente" + cliente.getNome()+ " e período:" +
                 "\nPeríodo: " + cliente.getContas().get(0).getDataAberturaConta() + " a " + Date.from(LocalDateTime.now().atZone(ZoneId.systemDefault()).toInstant())  +
                 "\nCliente: " + cliente.getNome() +
                 " - Cliente desde: " + cliente.getContas().get(0).getDataAberturaConta() +
@@ -150,20 +147,20 @@ public class Main {
     }
 
     private static String getRelatorioSaldoTodosClientes(List<Pessoa> clientes) {
-        String retornoRelatorio = "";
+        String retornoRelatorio = "Relatório de saldo de todos os clientes:";
 
        for (int i = 0; i < clientes.size(); i++){
-           retornoRelatorio += "\nCliente : " + clientes.get(i).getNome() + " desde: " + clientes.get(i).getContas().get(0).getDataAberturaConta() +
+           retornoRelatorio += "\nCliente: " + clientes.get(i).getNome() + " desde: " + clientes.get(i).getContas().get(0).getDataAberturaConta() +
            " - Saldo em " + Date.from(LocalDateTime.now().atZone(ZoneId.systemDefault()).toInstant()) + ": " + clientes.get(i).getContas().get(0).getSaldoAtual();
        }
        return retornoRelatorio;
     }
 
-    public static int getTotalMovimentacoes(int movimentcaoDebito, int movimentacaoCredito) {
+    private static int getTotalMovimentacoes(int movimentcaoDebito, int movimentacaoCredito) {
         return movimentacaoCredito + movimentcaoDebito;
     }
 
-    public static double getValorMovimentacoes(int movimentcaoDebito, int movimentacaoCredito) {
+    private static double getValorMovimentacoes(int movimentcaoDebito, int movimentacaoCredito) {
         int valorMovimentacoes = movimentacaoCredito + movimentcaoDebito;
         if (valorMovimentacoes <= 10)
             return valorMovimentacoes * 1;

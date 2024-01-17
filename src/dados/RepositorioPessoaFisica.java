@@ -49,7 +49,7 @@ public class RepositorioPessoaFisica implements IRepositorioPessoaFisica, Serial
             }
             ois.close();
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("Erro: " + e.getMessage());
         }
         return rep;
     }
@@ -127,7 +127,7 @@ public class RepositorioPessoaFisica implements IRepositorioPessoaFisica, Serial
             ous.close();
 
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("Erro: " + e.getMessage());
         }
     }
 

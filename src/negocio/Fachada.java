@@ -50,8 +50,8 @@ public class Fachada implements IFachada{
     }
 
     @Override
-    public ContaBancaria buscarContaBancaria(String idConta) {
-        return controladorContaBancaria.buscarContaBancaria(idConta);
+    public ContaBancaria buscarContaBancaria(String idCliente) {
+        return controladorContaBancaria.buscarContaBancaria(idCliente);
     }
 
     @Override
@@ -66,8 +66,8 @@ public class Fachada implements IFachada{
     }
 
     @Override
-    public void removerConta(String idConta) {
-        controladorContaBancaria.removerConta(idConta);
+    public void removerConta(String idCliente) {
+        controladorContaBancaria.removerConta(idCliente);
 
     }
 

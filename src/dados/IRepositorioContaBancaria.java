@@ -3,13 +3,13 @@ package dados;
 import beans.ContaBancaria;
 
 public interface IRepositorioContaBancaria {
-    ContaBancaria buscarConta(String idConta);
+    ContaBancaria buscarConta(String idCliente);
 
     boolean cadastrar(ContaBancaria conta);
 
-    void remover(String idConta);
+    void remover(String idCliente);
 
-    boolean existe(String idConta);
+    boolean existe(String idCliente);
 
     void salvarConta();
 

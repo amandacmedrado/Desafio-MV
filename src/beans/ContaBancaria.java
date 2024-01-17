@@ -3,7 +3,8 @@ package beans;
 import java.io.Serializable;
 import java.util.Date;
 public class ContaBancaria implements Serializable {
-        private String idConta;
+        private int idConta;
+        private String idCliente;
         private String nomeCliente;
         private int numeroAgencia;
         private int numeroConta;
@@ -15,8 +16,8 @@ public class ContaBancaria implements Serializable {
         private Date dataAberturaConta; //verificar declaração da variável//
 
 
-        public ContaBancaria(String idConta, String nomeCliente, int numeroAgencia, int numeroConta, double saldoInicial, Date dataAberturaConta) {
-                this.idConta = idConta;
+        public ContaBancaria(String idCliente, String nomeCliente, int numeroAgencia, int numeroConta, double saldoInicial, Date dataAberturaConta) {
+                this.idCliente = idCliente;
                 this.nomeCliente = nomeCliente;
                 this.numeroAgencia = numeroAgencia;
                 this.numeroConta = numeroConta;
@@ -27,13 +28,20 @@ public class ContaBancaria implements Serializable {
                 this.movimentacoesCredito = 0;
         }
 
-
-        public String getIdConta() {
+        public int getIdConta() {
                 return idConta;
         }
 
-        public void setIdConta(String idConta) {
+        public void setIdConta(int idConta) {
                 this.idConta = idConta;
+        }
+
+        public String getIdCliente() {
+                return idCliente;
+        }
+
+        public void setIdCliente(String idCliente) {
+                this.idCliente = idCliente;
         }
 
         public void setNomeCliente(String nomeCliente) {
@@ -96,7 +104,7 @@ public class ContaBancaria implements Serializable {
         @Override
         public String toString() {
                 return "ContaBancaria{" +
-                        "idConta=" + idConta +
+                        "idCliente=" + idCliente +
                         "nomeCliente=" + nomeCliente + '\'' +
                         ", numeroAgencia=" + numeroAgencia +
                         ", numeroConta=" + numeroConta +

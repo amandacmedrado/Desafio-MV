@@ -11,10 +11,10 @@ public interface IFachada {
     void cadastrarConta (ContaBancaria conta);
     PessoaFisica buscarPessoaFisica ( String cpf);
     PessoaJuridica buscarPessoaJuridica (String cnpj);
-    ContaBancaria buscarContaBancaria ( String idConta);
+    ContaBancaria buscarContaBancaria ( String idCliente);
     void removerPessoaFisica (String cpf);
     void removerPessoaJuridica (String cnpj);
-    void removerConta  (String idConta);
+    void removerConta  (String idCliente);
     void transferir(double valortransferencia, ContaBancaria contaOrigem, ContaBancaria contaDestino);
     void atualizaSaldo( ContaBancaria conta, double saldo);
 }

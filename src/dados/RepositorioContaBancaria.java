@@ -50,26 +50,26 @@ public class RepositorioContaBancaria implements IRepositorioContaBancaria, Seri
             }
             ois.close();
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("Erro: " + e.getMessage());
         }
         return rep;
 
     }
 
     @Override
-    public ContaBancaria buscarConta(String idConta) {
+    public ContaBancaria buscarConta(String idCliente) {
         ContaBancaria conta = null;
-        if (idConta != null) {
-            conta = this.contas.get(buscarIndiceIdConta(idConta));
+        if (idCliente != null) {
+            conta = this.contas.get(buscarIndiceIdCliente(idCliente));
 
         }
         return conta;
     }
-    public int buscarIndiceIdConta(String idConta) {
+    public int buscarIndiceIdCliente(String idCliente) {
         int i = 0;
         boolean resposta = false;
         while (resposta != true && i < this.contas.size()) {
-            if (idConta.equals(this.contas.get(i).getIdConta())) {
+            if (idCliente.equals(this.contas.get(i).getIdCliente())) {
                 resposta = true;
             } else {
                 i = i + 1;
@@ -95,18 +95,18 @@ public class RepositorioContaBancaria implements IRepositorioContaBancaria, Seri
     }
 
     @Override
-    public void remover(String idConta) {
-        if (existe(idConta)) {
+    public void remover(String idCliente) {
+        if (existe(idCliente)) {
 
-            this.contas.remove(buscarConta(idConta));
+            this.contas.remove(buscarConta(idCliente));
 
         }
         this.salvarConta();
     }
     @Override
-    public boolean existe(String idConta) {
+    public boolean existe(String idCliente) {
         boolean existe = false;
-        int i = this.buscarIndiceIdConta(idConta);
+        int i = this.buscarIndiceIdCliente(idCliente);
         if (i != this.contas.size()) {
             existe = true;
         }
@@ -127,14 +127,14 @@ public class RepositorioContaBancaria implements IRepositorioContaBancaria, Seri
             ous.close();
 
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("Erro: " + e.getMessage());
         }
 
     }
 
     @Override
     public void atualizaSaldo(ContaBancaria conta, double saldo) {
-        if (existe(conta.getIdConta())) {
+        if (existe(conta.getIdCliente())) {
             conta.setSaldoAtual(saldo);
         }
 
