@@ -1,4 +1,6 @@
 package beans;
+import enums.TipoPessoa;
+
 import java.io.Serializable;
 import java.util.List;
 

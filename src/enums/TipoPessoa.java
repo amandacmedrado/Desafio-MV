@@ -1,4 +1,4 @@
-package beans;
+package enums;
 
 public enum TipoPessoa {
     PESSOA_FISICA(1),
