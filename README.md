@@ -6,7 +6,7 @@ O programa cria conta de clientes, seja pessoa física ou jurídica, onde os mes
 O programa foi desenvolvido da seguinte maneira:
 
 * Desenvolvimento em Java Console App;
-* Classes de modelo, dados, controladores da execução do programa e dos testes de unidade foram criadas e encontram-se separadas 
+* Classes de modelo, dados, negócio e dos testes de unidade foram criadas e encontram-se separadas 
 fisicamente em camadas na solução, para uma melhor distinção na análise e manutenção do código. Como também a melhor execução
 dos testes de unidade, ao facilitar o entendimento de cada teste unitário, ganhamos em qualidade;
 * Foram implementadas operações de busca, cadastro, atualização  e exclusão para as classes: pessoa física, pessoa jurídica e conta bancária.
